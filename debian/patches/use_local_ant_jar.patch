@@ -1,0 +1,37 @@
+Description: use a local copy of ant-contrib.jar
+ This patch was applied directly to the source before the package
+ source format was set to quilt.
+Author: tony mancill <tmancill@debian.org>
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2018-04-02
+
+--- libserializer-1.1.6.orig/common_build.xml
++++ libserializer-1.1.6/common_build.xml
+@@ -371,17 +371,9 @@ TYPICAL TARGET SEQUENCE
+ 	    ====================================================================-->
+   <target name="antcontrib.download" unless="antcontrib.available">
+     <mkdir dir="${tmp.build.cache.dir}" />
+-    <get src="http://downloads.sourceforge.net/ant-contrib/ant-contrib-1.0b3-bin.zip"
+-         dest="${tmp.build.cache.dir}/antcontrib.zip"
+-         usetimestamp="true" />
+-    <unzip src="${tmp.build.cache.dir}/antcontrib.zip" dest="${tmp.build.cache.dir}">
+-      <patternset>
+-        <include name="**/*.jar" />
+-      </patternset>
+-    </unzip>
+     <copy todir="${antcontrib.build.cache.dir}">
+-      <fileset dir="${tmp.build.cache.dir}/ant-contrib">
+-        <include name="**/*.jar" />
++      <fileset dir="/usr/share/java">
++        <include name="ant-contrib.jar" />
+       </fileset>
+     </copy>
+   </target>
+@@ -1648,4 +1640,4 @@ TYPICAL TARGET SEQUENCE
+     </dot-classpath>
+   </target>
+ 
+-</project>
+\ No newline at end of file
++</project>

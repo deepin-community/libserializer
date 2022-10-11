@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+export JAVA_HOME=/usr/lib/jvm/default-java
+export CLASSPATH=/usr/share/ant/lib/ant-launcher.jar:/usr/share/java/commons-logging.jar:/usr/share/java/libbase.jar:/usr/share/java/ant-contrib.jar
+
+DEB_UPSTREAM_VERSION := 1.1-SNAPSHOT
+
+%:
+	dh $@ --with javahelper
+
+override_dh_auto_install:
+	install -D -m 644 ./dist/libserializer-$(DEB_UPSTREAM_VERSION).jar debian/libserializer-java/usr/share/java/libserializer-$(DEB_UPSTREAM_VERSION).jar
+	ln -s libserializer-$(DEB_UPSTREAM_VERSION).jar debian/libserializer-java/usr/share/java/libserializer.jar

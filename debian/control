@@ -1,0 +1,24 @@
+Source: libserializer
+Section: java
+Priority: optional
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Uploaders: Rene Engelhard <rene@debian.org>
+Build-Depends:
+ ant,
+ ant-contrib,
+ debhelper-compat (= 13),
+ default-jdk,
+ javahelper,
+ libbase-java,
+ libcommons-logging-java
+Standards-Version: 4.5.0
+Vcs-Browser: https://salsa.debian.org/java-team/libserializer
+Vcs-Git: https://salsa.debian.org/java-team/libserializer.git
+Homepage: http://jfreereport.sourceforge.net/
+
+Package: libserializer-java
+Architecture: all
+Depends: ${misc:Depends}, libbase-java, libcommons-logging-java
+Description: general serializaton framework
+ This library module contains a general serialization framework. It simplifies
+ the task of writing custom serialization handlers for non-serializable classes.
